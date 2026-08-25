@@ -1,4 +1,4 @@
-package hw3;
+
 
 public class SinglyLinkedList {
     Node head;
@@ -82,7 +82,7 @@ public class SinglyLinkedList {
         } else {
             Node current = head ;
             while(current != null){
-                if(current.data == id){
+                if(current.student_id == id){
                     return current ;
                 }current = current.next ;
             }return null;
@@ -92,11 +92,11 @@ public class SinglyLinkedList {
     public Node eraseNode(int id){
         if (isEmpty()){
             return null ; 
-        }else if(head.data == id){Node temp = head  ; head = head.next ; return temp ; }
+        }else if(head.student_id == id){Node temp = head  ; head = head.next ; return temp ; }
          else {
             Node current = head ; 
             while(current.next != null){
-                if(current.next.data == id){
+                if(current.next.student_id == id){
                     Node temp = current.next ; 
                      current.next = current.next.next ; 
                      return temp ;
@@ -106,11 +106,23 @@ public class SinglyLinkedList {
     }
     
     public void addNodeAfter(Node node1, Node node2){
+        node2.next = node1.next ;
+        node1.next = node2; 
 
     }
     
     public void addNodeBefore(Node node1, Node node2){
-
+        Node current  = head ; 
+        if(isEmpty()){  return ; }
+        else if(current == node1){node2.next = node1  ;head = node2 ;  return ; }
+        else {
+            while(current.next != node1 && current.next != null){
+            current = current.next ;
+        } 
+        current.next = node2 ;
+        node2.next =node1 ; 
+        return ; 
+    }
     }
     
     public boolean isEmpty(){
