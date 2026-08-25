@@ -17,11 +17,9 @@ public class SinglyLinkedList {
         else{
             Node current = head ; 
             while(current.next.next != null){
-                current = current.next ; // express as i++ 
-                head = current ; 
-                head = null ; 
+                current = current.next ; // express as i++         
             }
-
+            current.next = null ; 
         }
     }
     
