@@ -17,7 +17,8 @@ public class SinglyLinkedList {
         else{
             Node current = head ; 
             while(current.next.next != null){
-                current = current.next ; // express as i++         
+                current = current.next ; // express as i++ 
+        
             }
             current.next = null ; 
         }
@@ -42,41 +43,65 @@ public class SinglyLinkedList {
     
     public Node topBack(){ 
         if (isEmpty()){
-            return new Node();
-        } else {
-            return new Node();
+            System.out.println("ERROR"); 
+            return null; 
+        } 
+        else{
+            Node current = head; 
+            while(current.next != null){ 
+                current = current.next ; 
+            }return current ; 
         }
     }
     
     public void pushFront(Node node){
         if (isEmpty()){
-
+            head = node ; 
         }else{
-
+            node.next = head ; 
+            head = node ;
+        
         }
     }
     
     public void pushBack(Node node) {
         if (isEmpty()){
-
+            head = node ; 
         } else {
-
+            Node current  = head;
+            while(current.next != null){
+                current = current.next ;
+            }
+            current.next = node  ; 
         }
     }
 
     public Node findNode(int id){
         if (isEmpty()){
-            return new Node();
+            return null;
         } else {
-            return new Node();
+            Node current = head ;
+            while(current != null){
+                if(current.data == id){
+                    return current ;
+                }current = current.next ;
+            }return null;
         }
     }
     
     public Node eraseNode(int id){
         if (isEmpty()){
-            return new Node();
-        } else {
-            return new Node();
+            return null ; 
+        }else if(head.data == id){Node temp = head  ; head = head.next ; return temp ; }
+         else {
+            Node current = head ; 
+            while(current.next != null){
+                if(current.next.data == id){
+                    Node temp = current.next ; 
+                     current.next = current.next.next ; 
+                     return temp ;
+                }current = current.next ;
+            }return null ; 
         }
     }
     
