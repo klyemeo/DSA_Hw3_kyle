@@ -108,9 +108,9 @@ public class DoublyLinkedList {
             System.out.println("ERROR");
             return new Node("Empty List!");
         } else {
-            if(findNode(id)){
-                if(current == head){ popFront();}
-                else if(current == tail){ popBack();}
+            if(findNode(id).student_id == id){
+                // if(current == head){ popFront();}
+                // else if(current == tail){ popBack();}
                 
             }
             return new Node("Student Not Found!");
@@ -134,7 +134,16 @@ public class DoublyLinkedList {
         }
     }
     public void merge(DoublyLinkedList list){
-        
+        if(this.head == null )
+        {
+             this.head = list.head;
+             this.tail = list.tail; 
+        }else
+        {
+            this.tail.next = list.head ;
+            list.head.previous = this.tail ; 
+            this.tail = list.tail ;
+        }      
     }
     
 public void printStructure() {
